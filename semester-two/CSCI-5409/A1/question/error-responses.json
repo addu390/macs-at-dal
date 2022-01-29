@@ -1,0 +1,9 @@
+{
+	"word": "pota",
+	"error": "Word not found in dictionary."
+}
+
+{
+	"word": nil,
+	"error": "Invalid JSON input."
+}

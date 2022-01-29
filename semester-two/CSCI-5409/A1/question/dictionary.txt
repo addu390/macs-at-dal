@@ -1,0 +1,3 @@
+potato=a starchy plant tuber which is one of the most important food crops, cooked and eaten as a vegetable.
+car=a four-wheeled road vehicle that is powered by an engine and is able to carry a small number of people.
+house=a building for human habitation, especially one that is lived in by a family or small group of people.

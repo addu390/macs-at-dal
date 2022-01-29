@@ -1,0 +1,237 @@
+{
+	"sites": [
+		{
+			"name": "VM1",
+			"databases": [
+				{
+					"name": "ecommerce",
+					"tables": [
+						{
+							"name": "customers",
+							"columns": [
+								{
+									"name": "id",
+									"type": "VARCHAR(255)"
+								},
+								{
+									"name": "unique_id",
+									"type": "VARCHAR(255)"
+								},
+								{
+									"name": "zip_code_prefix",
+									"type": "VARCHAR(50)"
+								},
+								{
+									"name": "city",
+									"type": "VARCHAR(50)"
+								},
+								{
+									"name": "state",
+									"type": "VARCHAR(50)"
+								}
+							]
+						},
+						{
+							"name": "geolocation",
+							"columns": [
+								{
+									"name": "zip_code_prefix",
+									"type": "VARCHAR(50)"
+								},
+								{
+									"name": "latitude",
+									"type": "DECIMAL(16,14)"
+								},
+								{
+									"name": "longitude",
+									"type": "DECIMAL(17,14)"
+								},
+								{
+									"name": "city",
+									"type": "VARCHAR(50)"
+								},
+								{
+									"name": "state",
+									"type": "VARCHAR(50)"
+								}
+							]
+						},
+						{
+							"name": "orders",
+							"columns": [
+								{
+									"name": "id",
+									"type": "VARCHAR(255)"
+								},
+								{
+									"name": "customer_id",
+									"type": "VARCHAR(255)"
+								},
+								{
+									"name": "status",
+									"type": "VARCHAR(50)"
+								},
+								{
+									"name": "purchase_date",
+									"type": "DATETIME"
+								},
+								{
+									"name": "approved_at",
+									"type": "DATETIME"
+								},
+								{
+									"name": "delivered_carrier_date",
+									"type": "DATETIME"
+								},
+								{
+									"name": "delivered_customer_date",
+									"type": "DATETIME"
+								},
+								{
+									"name": "estimated_delivery_date",
+									"type": "DATETIME"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "VM2",
+			"databases": [
+				{
+					"name": "ecommerce",
+					"tables": [
+						{
+							"name": "items",
+							"columns": [
+								{
+									"name": "id",
+									"type": "INT(11)"
+								},
+								{
+									"name": "order_id",
+									"type": "VARCHAR(255)"
+								},
+								{
+									"name": "product_id",
+									"type": "VARCHAR(255)"
+								},
+								{
+									"name": "seller_id",
+									"type": "VARCHAR(255)"
+								},
+								{
+									"name": "shipping_limit_date",
+									"type": "DATETIME"
+								},
+								{
+									"name": "price",
+									"type": "DECIMAL(10,2)"
+								},
+								{
+									"name": "freight_value",
+									"type": "DECIMAL(10,2)"
+								}
+							]
+						},
+						{
+							"name": "payments",
+							"columns": [
+								{
+									"name": "order_id",
+									"type": "VARCHAR(255)"
+								},
+								{
+									"name": "sequential",
+									"type": "INT(11)"
+								},
+								{
+									"name": "type",
+									"type": "VARCHAR(50)"
+								},
+								{
+									"name": "installments",
+									"type": "INT(11)"
+								},
+								{
+									"name": "value",
+									"type": "DECIMAL(10,2)"
+								}
+							]
+						},
+						{
+							"name": "reviews",
+							"columns": [
+								{
+									"name": "id",
+									"type": "VARCHAR(255)"
+								},
+								{
+									"name": "order_id",
+									"type": "VARCHAR(255)"
+								},
+								{
+									"name": "score",
+									"type": "INT(11)"
+								},
+								{
+									"name": "comment_title",
+									"type": "TEXT"
+								},
+								{
+									"name": "comment_message",
+									"type": "TEXT"
+								},
+								{
+									"name": "creation_date",
+									"type": "DATETIME"
+								},
+								{
+									"name": "answer_date",
+									"type": "DATETIME"
+								}
+							]
+						},
+						{
+							"name": "sellers",
+							"columns": [
+								{
+									"name": "id",
+									"type": "VARCHAR(255)"
+								},
+								{
+									"name": "zip_code_prefix",
+									"type": "VARCHAR(50)"
+								},
+								{
+									"name": "city",
+									"type": "VARCHAR(50)"
+								},
+								{
+									"name": "state",
+									"type": "VARCHAR(50)"
+								}
+							]
+						},
+						{
+							"name": "product_translation",
+							"columns": [
+								{
+									"name": "category_name",
+									"type": "VARCHAR(255)"
+								},
+								{
+									"name": "category_name_english",
+									"type": "VARCHAR(255)"
+								}
+							]
+						}
+					]
+				}
+
+			]
+		}
+	]
+}
