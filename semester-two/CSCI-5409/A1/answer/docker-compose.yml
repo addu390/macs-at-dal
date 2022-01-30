@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  flask-processor:
+    image: thenextbigproject/flask-processor:v13
+    container_name: flask-processor
+    expose:
+      - "5050"
+    depends_on:
+      - flask-validator
+    networks:
+      - flask-network
+    volumes:
+      - ".:/app/database:rw"
+
+  flask-validator:
+    image: thenextbigproject/flask-validator:v13
+    container_name: flask-validator
+    ports:
+      - "5000:5000"
+    networks:
+      - flask-network
+
+networks:
+  flask-network:
+    name: flask-network
