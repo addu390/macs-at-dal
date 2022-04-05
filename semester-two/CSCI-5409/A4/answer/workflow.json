@@ -1,0 +1,89 @@
+{
+  "Comment": "A description of my state machine",
+  "StartAt": "Form Input",
+  "States": {
+    "Form Input": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "OutputPath": "$.Payload",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:ca-central-1:991098640811:function:form",
+        "Payload.$": "$"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 6,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "Tier Selection"
+    },
+    "Tier Selection": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.tier",
+          "StringEquals": "TIER_1",
+          "Next": "Tier 1"
+        },
+        {
+          "Variable": "$.tier",
+          "StringEquals": "TIER_2",
+          "Next": "Tier 2"
+        },
+        {
+          "Variable": "$.tier",
+          "StringEquals": "TIER_3",
+          "Next": "Tier 3"
+        }
+      ],
+      "Default": "Unknown"
+    },
+    "Tier 1": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sqs:sendMessage",
+      "Parameters": {
+        "MessageBody.$": "$",
+        "QueueUrl": "https://sqs.ca-central-1.amazonaws.com/991098640811/tier-1"
+      },
+      "End": true,
+      "Comment": "Tier 1"
+    },
+    "Unknown": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sqs:sendMessage",
+      "Parameters": {
+        "MessageBody.$": "$",
+        "QueueUrl": "https://sqs.ca-central-1.amazonaws.com/991098640811/tier-default"
+      },
+      "End": true,
+      "Comment": "Unknown"
+    },
+    "Tier 2": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sqs:sendMessage",
+      "Parameters": {
+        "MessageBody.$": "$",
+        "QueueUrl": "https://sqs.ca-central-1.amazonaws.com/991098640811/tier-2"
+      },
+      "End": true,
+      "Comment": "Tier 2"
+    },
+    "Tier 3": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sqs:sendMessage",
+      "Parameters": {
+        "MessageBody.$": "$",
+        "QueueUrl": "https://sqs.ca-central-1.amazonaws.com/991098640811/tier-3"
+      },
+      "End": true,
+      "Comment": "Tier 3"
+    }
+  }
+}
