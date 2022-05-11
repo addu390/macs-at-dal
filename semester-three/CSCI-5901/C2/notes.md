@@ -35,7 +35,8 @@ Need coffee (2:56 PM)
   - Make sure the training set is good.
   - Perform well of training set/dev test.
   
-### Protected Attributes
+### Attributes
 
-### Skewed Data Distribution  
+- Skewed Data Distribution: Left or Right Skew; not ideal.
+- F-Score: From Recall and Precision (The number of true positive results divided by the number of all positive results).
 
